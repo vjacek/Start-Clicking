@@ -5,6 +5,8 @@ import Col from 'react-bootstrap/Col';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { getLevel, getTime, COLORS } from './utils.js';
 
+const WHITE = '#FFFFFF';
+
 class App extends Component {
 
   state = {
@@ -13,7 +15,8 @@ class App extends Component {
     highscore: 0,
     color: COLORS.LIGHTGREY,
     gameOver: false,
-    newGameCountdown: 5
+    newGameCountdown: 5,
+    showProgress: true
   }
 
   // update score, progress bar, background
@@ -38,10 +41,15 @@ class App extends Component {
           highscore: newScore > prevState.highscore ? newScore : prevState.highscore,
           color: color,
           timer: setTimeout(() => {
+
             console.log('timer over');
+
+            // Game over
             this.setState({
               gameOver: true,
-              color: COLORS.RED
+              color: WHITE,
+              scoreColor: COLORS.LIGHTGREY,
+              showProgress: false
             })
           }, time)
         };
@@ -53,7 +61,8 @@ class App extends Component {
           return {
             progress: 0,
             score: prevState.newGameCountdown,
-            newGameCountdown: prevState.newGameCountdown - 1
+            newGameCountdown: prevState.newGameCountdown - 1,
+            scoreColor: COLORS.LIGHTGREY
           };
         }
         // Actual new game state
@@ -63,8 +72,10 @@ class App extends Component {
             score: 0,
             progress: 0,
             color: COLORS.LIGHTGREY,
+            scoreColor: COLORS.BLACK,
             gameOver: false,
-            newGameCountdown: 5
+            newGameCountdown: 5,
+            showProgress: true
           };
         }
       }
@@ -89,7 +100,9 @@ class App extends Component {
         <Row style={{ height: "10vh", border: "1px solid orange" }}>
           <Col md={1} />
           <Col md={10}>
-            <ProgressBar variant="primary" now={this.state.progress} />
+            {this.state.showProgress &&
+              <ProgressBar variant="primary" now={this.state.progress} />
+            }
           </Col>
           <Col md={1} />
         </Row>
@@ -100,7 +113,8 @@ class App extends Component {
             textAlign: "center",
             border: "1px solid red",
             fontWeight: 700,
-            fontSize: "70px"
+            fontSize: "70px",
+            color: `${this.state.scoreColor}`
           }}>
             <div>
               {this.state.score}
