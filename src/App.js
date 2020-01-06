@@ -90,14 +90,13 @@ class App extends Component {
         onClick={this.handleClick}
         style={{
           minHeight: "100vh",
-          border: "2px solid blue",
           background: this.state.color
         }}
       >
 
         <Row style={{ height: "20vh" }} />
 
-        <Row style={{ height: "10vh", border: "1px solid orange" }}>
+        <Row style={{ height: "10vh" }}>
           <Col md={1} />
           <Col md={10}>
             {this.state.showProgress &&
@@ -107,11 +106,10 @@ class App extends Component {
           <Col md={1} />
         </Row>
 
-        <div className="row align-items-center" style={{ border: "1px solid yellow" }}>
+        <div className="row align-items-center">
           <Col />
           <Col md={1} style={{
             textAlign: "center",
-            border: "1px solid red",
             fontWeight: 700,
             fontSize: "70px",
             color: `${this.state.scoreColor}`
