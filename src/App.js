@@ -100,7 +100,7 @@ class App extends Component {
 
         <Row style={{ height: "15vh" }} />
 
-        <Row style={{ height: "10vh", border: "1px solid red" }}>
+        <Row style={{ height: "10vh" }}>
           <div style={{
             margin: "auto",
             fontSize: "50px",
@@ -111,7 +111,7 @@ class App extends Component {
           </div>
         </Row>
 
-        <Row style={{ height: "10vh", border: "1px solid blue" }} />
+        <Row style={{ height: "10vh" }} />
 
         <Row style={{ height: "10vh" }}>
           <Col md={1} />

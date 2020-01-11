@@ -1,13 +1,11 @@
-## Moving files to server
 
-$ npm run build
-$ cd build 
-$ scp -r * northboro:~/minimumviableproduct.dev
 
-On the server
+## Build Production Code
+$ npm run build 
+$ scp -r build northboro:~/minimumviableproduct.dev
 
-$ cd ~/minimumviableproduct.dev
-$ sudo cp -r * /var/www/minimumviableproduct.dev
+## Move built code to server
+$ sudo cp -r minimumviableproduct.dev /var/www/minimumviableproduct.dev
 
 
 ## Certbot
