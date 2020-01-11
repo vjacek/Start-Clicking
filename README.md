@@ -1,3 +1,40 @@
+## Moving files to server
+
+$ npm run build
+$ cd build 
+$ scp -r * northboro:~/minimumviableproduct.dev
+
+On the server
+
+$ cd ~/minimumviableproduct.dev
+$ sudo cp -r * /var/www/minimumviableproduct.dev
+
+
+## Certbot
+Congratulations! You have successfully enabled https://minimumviableproduct.dev
+
+You should test your configuration at:
+https://www.ssllabs.com/ssltest/analyze.html?d=minimumviableproduct.dev
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/minimumviableproduct.dev/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/minimumviableproduct.dev/privkey.pem
+   Your cert will expire on 2020-04-06. To obtain a new or tweaked
+   version of this certificate in the future, simply run certbot-auto
+   again with the "certonly" option. To non-interactively renew *all*
+   of your certificates, run "certbot-auto renew"
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

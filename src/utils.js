@@ -32,7 +32,7 @@ export const getTime = (score, highscore) => {
   // Tuning=2 allows doubling of current high score
   // Tuning=10 would allow 10x high score before timeout becomes too fast
   // Starting with 1.2 so that games are almost always killed before reaching 120% of current highscore
-  var progressSpeed = 1.2;
+  var progressSpeed = 1.6;
 
   var progress = score / (highscore === 0 ? 10 : highscore);
   var time = (1 - progress / progressSpeed) * 1000;

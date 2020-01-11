@@ -6,6 +6,8 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import { getLevel, getTime, COLORS } from './utils.js';
 
 const WHITE = '#FFFFFF';
+const START_CLICKING = 'Start Clicking';
+const GAME_OVER = 'Game Over';
 
 class App extends Component {
 
@@ -16,7 +18,8 @@ class App extends Component {
     color: COLORS.LIGHTGREY,
     gameOver: false,
     newGameCountdown: 5,
-    showProgress: true
+    showProgress: true,
+    message: START_CLICKING
   }
 
   // update score, progress bar, background
@@ -30,10 +33,9 @@ class App extends Component {
         const newScore = prevState.score + 1;
         const { color, min, max } = getLevel(newScore);
         const time = getTime(this.state.score, this.state.highscore);
+        clearTimeout(prevState.timer);
 
         console.log('color: ' + color + ', min: ' + min + ', max: ' + max + ', score: ' + prevState.score + ', highscore: ' + prevState.highscore + ', time: ' + time);
-
-        clearTimeout(prevState.timer);
 
         return {
           score: newScore,
@@ -49,7 +51,8 @@ class App extends Component {
               gameOver: true,
               color: WHITE,
               scoreColor: COLORS.LIGHTGREY,
-              showProgress: false
+              showProgress: false,
+              message: GAME_OVER
             })
           }, time)
         };
@@ -75,7 +78,8 @@ class App extends Component {
             scoreColor: COLORS.BLACK,
             gameOver: false,
             newGameCountdown: 5,
-            showProgress: true
+            showProgress: true,
+            message: START_CLICKING
           };
         }
       }
@@ -94,7 +98,20 @@ class App extends Component {
         }}
       >
 
-        <Row style={{ height: "20vh" }} />
+        <Row style={{ height: "15vh" }} />
+
+        <Row style={{ height: "10vh", border: "1px solid red" }}>
+          <div style={{
+            margin: "auto",
+            fontSize: "50px",
+            fontWeight: "bold",
+            color: `${this.state.scoreColor}`
+          }}>
+            {this.state.message}
+          </div>
+        </Row>
+
+        <Row style={{ height: "10vh", border: "1px solid blue" }} />
 
         <Row style={{ height: "10vh" }}>
           <Col md={1} />
